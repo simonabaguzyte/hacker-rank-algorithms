@@ -12,8 +12,8 @@ def formingMagicSquare(matrix):
 
     minimum_cost = sys.maxsize
 
-    difference = 0
     for i in magical_square:
+        difference = 0
         for i,j in zip(matrix, i):
             difference = difference + abs(i-j)
         minimum_cost = min(minimum_cost, difference)
