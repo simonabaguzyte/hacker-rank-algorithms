@@ -1,19 +1,20 @@
 def countApplesAndOranges(s_house_starts, t_house_ends, a_apple_tree, b_orange_tree, apples_array, oranges_array):
-    
+    def find_if_in_range(position):
+        return position >= s_house_starts and position <= t_house_ends
+
     count_apples = 0
     count_oranges = 0
 
-    for x in apples_array:
-        temp = x + a_apple_tree
-        if temp >= s_house_starts and temp <= t_house_ends:
-            count_apples = count_apples + 1
+    for apple_position in apples_array:
+        if find_if_in_range(apple_position + a_apple_tree):
+            count_apples += 1
 
-    for x in oranges_array:
-        temp = x + b_orange_tree
-        if temp <= t_house_ends and temp >= s_house_starts:
-            count_oranges = count_oranges + 1
+    for orange_position in oranges_array:
+        if find_if_in_range(orange_position + b_orange_tree):
+            count_oranges += 1
             
-    print(count_apples,count_oranges)
+    print(count_apples)
+    print(count_oranges)
 
     
 if __name__ == '__main__':
