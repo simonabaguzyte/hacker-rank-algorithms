@@ -1,50 +1,45 @@
 def countApplesAndOranges(s_house_starts, t_house_ends, a_apple_tree, b_orange_tree, apples_array, oranges_array):
     
-    adding_apple_distance_to_position_of_tree = []
-    adding_orange_distance_to_position_of_tree = []
-    
-    for i in apples_array:
-        adding_apple_distance_to_position_of_tree = adding_apple_distance_to_position_of_tree + [a_apple_tree + i]
-    
-    for i in oranges_array:
-        adding_orange_distance_to_position_of_tree = adding_orange_distance_to_position_of_tree + [b_orange_tree + i]
-        
-    count_apples_on_house = 0
-    count_oranges_on_house = 0
+    count_apples = 0
+    count_oranges = 0
 
-    for i in adding_apple_distance_to_position_of_tree:
-        if i >= s_house_starts and i <= t_house_ends:
-            count_apples_on_house = count_apples_on_house + 1
+    for x in apples_array:
+        temp = x + a_apple_tree
+        if temp >= s_house_starts and temp <= t_house_ends:
+            count_apples = count_apples + 1
 
-    for i in adding_orange_distance_to_position_of_tree:
-        if i >= s_house_starts and i <= t_house_ends:
-            count_oranges_on_house = count_oranges_on_house + 1
-
-    return print(f"{count_apples_on_house}\n{count_oranges_on_house}")
+    for x in oranges_array:
+        temp = x + b_orange_tree
+        if temp <= t_house_ends and temp >= s_house_starts:
+            count_oranges = count_oranges + 1
+            
+    print(count_apples,count_oranges)
 
     
 if __name__ == '__main__':
     
-    first_multiple_input = input("\nEnter starting and ending point of the house: ").rstrip().split()
+    house_position = input("\nEnter starting and ending point of the house: ").rstrip().split()
 
-    s = int(first_multiple_input[0])
+    s = int(house_position[0])
 
-    t = int(first_multiple_input[1])
+    t = int(house_position[1])
 
-    second_multiple_input = input("Enter position of apple and orange tree: ").rstrip().split()
+    apple_orange_tree_position = input("Enter position of apple and orange tree: ").rstrip().split()
 
-    a = int(second_multiple_input[0])
+    a = int(apple_orange_tree_position[0])
 
-    b = int(second_multiple_input[1])
+    b = int(apple_orange_tree_position[1])
 
-    third_multiple_input = input("Enter number of apples and oranges: ").rstrip().split()
+    apple_orange_fruit_number = input("Enter number of apples and oranges: ").rstrip().split()
 
-    m = int(third_multiple_input[0])
+    m = int(apple_orange_fruit_number[0])
 
-    n = int(third_multiple_input[1])
+    n = int(apple_orange_fruit_number[1])
 
     apples = list(map(int, input("Enter position of apples: ").rstrip().split()))
 
     oranges = list(map(int, input("Enter position of oranges: ").rstrip().split()))
+
+    # countApplesAndOranges(7, 10, 4, 12, [2, 3, -4], [3, -2, -4]) #test
 
     countApplesAndOranges(s, t, a, b, apples, oranges)
